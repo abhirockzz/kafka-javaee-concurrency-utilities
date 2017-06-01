@@ -1,7 +1,8 @@
-package com.wordpress.abhirockzz.kafka.concurrency.utils;
+package com.wordpress.abhirockzz.kafEEne.concurrency.utils;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
@@ -20,7 +21,7 @@ public class ConsumerScheduler {
     
     @PostConstruct
     public void regular() {
-        consumerJob = mses.scheduleWithFixedDelay(new Consumer(), 5, 1, TimeUnit.SECONDS);
+        consumerJob = mses.scheduleWithFixedDelay(new Consumer(), 15, 1, TimeUnit.SECONDS);
         System.out.println("Consumer triggered by thread " + Thread.currentThread().getName());
 
     }

@@ -1,21 +1,23 @@
-package com.wordpress.abhirockzz.kafka.concurrency.utils;
+package com.wordpress.abhirockzz.kafEEne.concurrency.utils;
+
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.enterprise.concurrent.ManagedExecutorService;
+import javax.enterprise.concurrent.ManagedScheduledExecutorService;
 
 @Singleton
 @Startup
 public class ProducerTrigger {
 
     @Resource
-    ManagedExecutorService mes;
+    ManagedScheduledExecutorService mses;
 
     @PostConstruct
     public void trigger() {
-        mes.execute(new Producer());
+        mses.schedule(new Producer(), 10, TimeUnit.SECONDS);
         System.out.println("Producer triggered....");
 
     }
